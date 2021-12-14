@@ -252,6 +252,9 @@ header.hero-block a.btn-primary:active {
     color: var(--blue-100)
 }
 
+
+/*menu*/
+
 .container-menu.menu-desktop {
     background-color: var(--trans-000)
 }
