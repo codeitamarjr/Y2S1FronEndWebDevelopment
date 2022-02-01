@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Functions in Javascript</title>
+</head>
+
+<body>
+    <script>
+        //Function call
+        //displayGreeting("Junior");
+
+        //Arrow function declaration
+        const greeting = (name, a, b) => console.log("Hello, world! " + name + " result " + (a + b));
+
+        //Arrow function with block of code
+        const sayGoodbye = () => {
+            number = 6;
+            greeting("Junior", number, 6);
+            console.log("Good bye.");
+        };
+
+        sayGoodbye();
+
+        //Function declaration
+        function sumA(a, b) {
+            // console.log(`Output A: ${a + b}`);
+            return (a + b);
+        }
+        sumA(1, 25);
+
+        function sumB(a, b) {
+            // console.log(`Output B: ${a + b}`);
+            return (a + b);
+        }
+        sumB(10, 25);
+
+        const sumC = (a, b) => {
+            //console.log(`Output C: ${a+b}`)
+            return (a + b)
+        };
+        sumC(1, 2);
+
+        let answerA = sumA(4, 5);
+        let answerB = sumB(100, 80);
+        let answerC = sumC(5, 9);
+
+        console.log(`Answer A: ${answerA}`);
+        console.log(`Answer B: ${answerB}`);
+        console.log(`Answer C: ${answerC}`);
+    </script>
+</body>
+
+</html>
