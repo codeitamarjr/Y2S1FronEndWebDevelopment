@@ -74,21 +74,23 @@
                     <p>How much was your bill? € <input id="billAmount" type="text" placeholder="Bill Amount" control-id="ControlID-1"></p>
 
                     <p>How was your service? <select id="serviceQuality" control-id="ControlID-2">
-                    <option disabled="" selected="" value="0">-- Choose an Option --</option>
-                    <option value="0.3">30% - Outstanding</option>
-                    <option value="0.2">20% - Good</option>
-                    <option value="0.15">15% - It was OK</option>
-                    <option value="0.1">10% - Bad</option>
-                    <option value="0.05">5% - Terrible</option>
-                </select></p>
+                            <option disabled="" selected="" value="0">-- Choose an Option --</option>
+                            <option value="0.3">30% - Outstanding</option>
+                            <option value="0.2">20% - Good</option>
+                            <option value="0.15">15% - It was OK</option>
+                            <option value="0.1">10% - Bad</option>
+                            <option value="0.05">5% - Terrible</option>
+                        </select></p>
 
                 </form>
 
                 <p>How many people are sharing the bill?
                     <input id="numOfPeople" type="text" placeholder="Number of People" maxlength="
-            4" style="width: 32px" control-id="ControlID-3"> people</p>
+            4" style="width: 32px" control-id="ControlID-3"> people
+                </p>
 
-                <button type="button" class="btn" id="calculate" control-id="ControlID-4"> <i class="fa-solid fa-calculator"></i>Calculate Tip</button>
+                <button type="button" class="btn" id="btn-calculate" control-id="ControlID-4"> <i
+                        class="fa-solid fa-calculator"></i>Calculate Tip</button>
             </div>
             <!--calculator end-->
 
@@ -103,9 +105,35 @@
 
     <!-- JavaScript code start below -->
     <script>
-        let billAmount = document.getElementById("billAmount").value;
-        let serviceQuality = document.getElementById("serviceQuality").value;
-        let numOfPeople = document.getElementById("numOfPeople").value;
+        document.getElementById("tipDisplayBox").style.display = "none";
+        document.getElementById("btn-calculate").onclick = () => calculateTip();
+
+        function calculateTip() {
+            let billAmount = document.getElementById("billAmount").value;
+            let serviceQuality = document.getElementById("serviceQuality").value;
+            let numOfPeople = document.getElementById("numOfPeople").value;
+
+            if (billAmount == "" || serviceQuality == 0) {
+                alert("Please enter values");
+                return;
+            }
+
+            let tipTotal = (billAmount * serviceQuality);
+            tipTotal = Math.round(tipTotal * 100) / 100;
+            tipTotal = tipTotal.toFixed(2);
+
+            document.querySelector("#tipTotal").innerHTML = tipTotal;
+            if (numOfPeople === "" || numOfPeople === 1) {
+                numOfPeople = 1;
+                tipEach = tipTotal;
+            } else {
+                tipEach = tipTotal / numOfPeople;
+            }
+            document.getElementById("tipEach").innerHTML = (tipEach).toFixed(2);
+
+
+            document.getElementById("tipDisplayBox").style.display = "block";
+        }
     </script>
 
 
